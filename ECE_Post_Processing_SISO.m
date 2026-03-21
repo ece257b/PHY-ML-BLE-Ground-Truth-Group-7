@@ -204,6 +204,12 @@ for c = 1:3
             scatter(real(pkt_cfo_corrected), imag(pkt_cfo_corrected),5,'.')
             axis equal
             title(sprintf('Packet Constellation (Channel %d at %d)',c, s/Fs))
+
+            inst_freq = Fs/(2*pi) * diff(unwrap(angle(pkt_cfo_corrected)));
+
+            figure
+            plot(inst_freq)
+            title(sprintf('Instantaneous Frequency (Channel %d at %d)',c, s/Fs))
             end
 
             % Phase Tracking
