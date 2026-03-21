@@ -29,7 +29,7 @@
 - Run ``ECE_Post_Processing_SISO_NO_SNIFFER.m`` for power-based packet detection results.
 
 <img src="./images/SISO_Power.png" width="500">
-<img src="./images/SISO_Power_Packet.png" width="500">
+<img src="./images/ SISO_Power_Packet.png" width="500">
 
 ## Helper Scripts
 
