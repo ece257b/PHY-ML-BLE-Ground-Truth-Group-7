@@ -1,6 +1,5 @@
 %% Load Data
 load('C:\Users\cryba\MATLAB Drive\ism24gfulls.ota.rx.r001.mat') % Change location
-load('C:\Users\cryba\MATLAB Drive\data_sync.mat'); % Change location
 
 fid = fopen('C:\Users\cryba\MATLAB Drive\ism24gfulls1.ota.rx.r001.sigmf-meta'); % Change location
 raw = fread(fid, inf);
