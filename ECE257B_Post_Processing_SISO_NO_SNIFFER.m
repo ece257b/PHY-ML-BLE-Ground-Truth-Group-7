@@ -18,10 +18,10 @@ pxx_db = movmean(pxx_db,60);
 % ylabel('PSD (dB)')
 % title('PSD with smoothing')
 
-figure
-spectrogram(x,1024,768,1024,Fs,'centered')
-colorbar
-title('Full Spectrum')
+% figure
+% spectrogram(x,1024,768,1024,Fs,'centered')
+% colorbar
+% title('Full Spectrum')
 
 % Find spectral peaks
 [pk,locs] = findpeaks(pxx_db,'MinPeakProminence',5);
@@ -172,33 +172,33 @@ starts39 = find(diff(packets39) == 1);
 starts39 = starts39([true; diff(starts39) > min_spacing]);
 
 %% Plot Packet Detection Peaks
-figure(11)
-plot(energy38)
-hold on
-yline(threshold38,'r--')
-
-title('Packet Detection for BLE 38')
-xlabel('Sample')
-ylabel('Energy')
-
-figure(12)
-plot(energy37)
-hold on
-yline(threshold37,'r--')
-
-title('Packet Detection for BLE 37')
-xlabel('Sample')
-ylabel('Energy')
-
-figure(13)
-plot(energy39)
-hold on
-yline(threshold39,'r--')
-
-
-title('Packet Detection for BLE 39')
-xlabel('Sample')
-ylabel('Energy')
+% figure(11)
+% plot(energy38)
+% hold on
+% yline(threshold38,'r--')
+% 
+% title('Packet Detection for BLE 38')
+% xlabel('Sample')
+% ylabel('Energy')
+% 
+% figure(12)
+% plot(energy37)
+% hold on
+% yline(threshold37,'r--')
+% 
+% title('Packet Detection for BLE 37')
+% xlabel('Sample')
+% ylabel('Energy')
+% 
+% figure(13)
+% plot(energy39)
+% hold on
+% yline(threshold39,'r--')
+% 
+% 
+% title('Packet Detection for BLE 39')
+% xlabel('Sample')
+% ylabel('Energy')
 
 %% Plots to check Packet Detection
 
@@ -207,53 +207,53 @@ win = 1024;
 noverlap = 768;
 nfft = 1024;
 
-% BLE 38
-figure
-[S38,F38,T38] = spectrogram(ble38(1:xlen), win, noverlap, nfft, Fs, 'centered');
-surf(T38,F38,20*log10(abs(S38)),'EdgeColor','none');
-axis tight; view(0,90);
-xlabel('Time [s]'); ylabel('Frequency [Hz]'); colorbar;
-title('BLE 38 Packet Detection on Spectrogram'); hold on
-
-% Convert start indices to time (s)
-time_starts38 = starts38(starts38 <= xlen)/ Fs;
-
-% Overlay vertical lines at packet starts
-for k = 1:length(time_starts38)
-    plot([time_starts38(k) time_starts38(k)], [min(F38) max(F38)], 'r', 'LineWidth', 1.5);
-end
-
-% BLE 37
-figure
-[S37,F37,T37] = spectrogram(ble37(1:xlen), win, noverlap, nfft, Fs, 'centered');
-surf(T37,F37,20*log10(abs(S37)),'EdgeColor','none');
-axis tight; view(0,90);
-xlabel('Time [s]'); ylabel('Frequency [Hz]'); colorbar;
-title('BLE 37 Packet Detection on Spectrogram'); hold on
-
-time_starts37 = starts37(starts37 <= xlen) / Fs;
-for k = 1:length(time_starts37)
-    plot([time_starts37(k) time_starts37(k)], [min(F37) max(F37)], 'r', 'LineWidth', 1.5);
-end
-
-% BLE 39
-figure
-[S39,F39,T39] = spectrogram(ble39(1:xlen), win, noverlap, nfft, Fs, 'centered');
-surf(T39,F39,20*log10(abs(S39)),'EdgeColor','none');
-axis tight; view(0,90);
-xlabel('Time [s]'); ylabel('Frequency [Hz]'); colorbar;
-title('BLE 39 Packet Detection on Spectrogram'); hold on
-
-time_starts39 = starts39(starts39 <= xlen) / Fs;
-for k = 1:length(time_starts39)
-    plot([time_starts39(k) time_starts39(k)], [min(F39) max(F39)], 'r', 'LineWidth', 1.5);
-end
-
-disp("Packets per channel:")
-disp([length(starts37) length(starts38) length(starts39)])
-
-disp('Packet Starts:')
-disp([starts37(1:5) starts38(1:5) starts39(1:5)])
+% % BLE 38
+% figure
+% [S38,F38,T38] = spectrogram(ble38(1:xlen), win, noverlap, nfft, Fs, 'centered');
+% surf(T38,F38,20*log10(abs(S38)),'EdgeColor','none');
+% axis tight; view(0,90);
+% xlabel('Time [s]'); ylabel('Frequency [Hz]'); colorbar;
+% title('BLE 38 Packet Detection on Spectrogram'); hold on
+% 
+% % Convert start indices to time (s)
+% time_starts38 = starts38(starts38 <= xlen)/ Fs;
+% 
+% % Overlay vertical lines at packet starts
+% for k = 1:length(time_starts38)
+%     plot([time_starts38(k) time_starts38(k)], [min(F38) max(F38)], 'r', 'LineWidth', 1.5);
+% end
+% 
+% % BLE 37
+% figure
+% [S37,F37,T37] = spectrogram(ble37(1:xlen), win, noverlap, nfft, Fs, 'centered');
+% surf(T37,F37,20*log10(abs(S37)),'EdgeColor','none');
+% axis tight; view(0,90);
+% xlabel('Time [s]'); ylabel('Frequency [Hz]'); colorbar;
+% title('BLE 37 Packet Detection on Spectrogram'); hold on
+% 
+% time_starts37 = starts37(starts37 <= xlen) / Fs;
+% for k = 1:length(time_starts37)
+%     plot([time_starts37(k) time_starts37(k)], [min(F37) max(F37)], 'r', 'LineWidth', 1.5);
+% end
+% 
+% % BLE 39
+% figure
+% [S39,F39,T39] = spectrogram(ble39(1:xlen), win, noverlap, nfft, Fs, 'centered');
+% surf(T39,F39,20*log10(abs(S39)),'EdgeColor','none');
+% axis tight; view(0,90);
+% xlabel('Time [s]'); ylabel('Frequency [Hz]'); colorbar;
+% title('BLE 39 Packet Detection on Spectrogram'); hold on
+% 
+% time_starts39 = starts39(starts39 <= xlen) / Fs;
+% for k = 1:length(time_starts39)
+%     plot([time_starts39(k) time_starts39(k)], [min(F39) max(F39)], 'r', 'LineWidth', 1.5);
+% end
+% 
+% disp("Packets per channel:")
+% disp([length(starts37) length(starts38) length(starts39)])
+% 
+% disp('Packet Starts:')
+% disp([starts37(1:5) starts38(1:5) starts39(1:5)])
 
 %% Per packet processing
 
@@ -344,17 +344,17 @@ end
 % xlabel('Hz')
 
 %% 
-pkt = results(2).packet{1};
-
-figure
-plot(real(pkt))
-hold on
-plot(imag(pkt))
-title('Packet IQ')
-
-figure
-plot(results(2).phase{1})
-title('Packet phase')
+% pkt = results(2).packet{1};
+% 
+% figure
+% plot(real(pkt))
+% hold on
+% plot(imag(pkt))
+% title('Packet IQ')
+% 
+% figure
+% plot(results(2).phase{1})
+% title('Packet phase')
 
 %% Convert to Time
 timestamp_37 = starts37 / Fs;
