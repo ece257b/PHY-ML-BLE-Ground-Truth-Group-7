@@ -1,5 +1,5 @@
 %% Load Data
-load('C:\Users\cryba\MATLAB Drive\data.mat')
+load('.\data.mat')
 
 %% Find BLE Channels
 Fs = 100e6;

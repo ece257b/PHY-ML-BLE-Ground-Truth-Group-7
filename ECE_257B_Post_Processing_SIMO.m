@@ -1,14 +1,14 @@
 %% Load Data
-load('C:\Users\cryba\MATLAB Drive\ism24gfulls.ota.rx.r001.mat') % Change location
+load('.\ism24gfulls.ota.rx.r001.mat') % Change location
 
-fid = fopen('C:\Users\cryba\MATLAB Drive\ism24gfulls1.ota.rx.r001.sigmf-meta'); % Change location
+fid = fopen('.\ism24gfulls1.ota.rx.r001.sigmf-meta'); % Change location
 raw = fread(fid, inf);
 str = char(raw');
 fclose(fid);
 
 meta1 = jsondecode(str);
 
-fid = fopen('C:\Users\cryba\MATLAB Drive\ism24gfulls2.ota.rx.r001.sigmf-meta'); % Change location
+fid = fopen('.\ism24gfulls2.ota.rx.r001.sigmf-meta'); % Change location
 raw = fread(fid, inf);
 str = char(raw');
 fclose(fid);
@@ -99,7 +99,7 @@ ble39_2 = filter(lp, data2 .* exp(-1j*2*pi*freq39*t));
 
 
 %% Read PCAP
-p = pcapReader('capture_sync.pcap'); % incorrect data file 
+p = pcapReader('.\capture_sync.pcap'); % incorrect data file 
 packets = readAll(p);
 num_packets = length(packets);
 
